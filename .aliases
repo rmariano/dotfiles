@@ -1,0 +1,5 @@
+# vim: ft=sh
+alias ll='ls -lh --color'
+alias la='ls -lah --color'
+alias cp='cp -i'
+alias mv='mv -i'

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+    export TERM='gnome-256color';
+elif infocmp xterm-256color >/dev/null 2>&1; then
+    export TERM='xterm-256color';
+fi;
+
+
+if tput setaf 1 &> /dev/null; then
+    reset=$(tput sgr0);
+    blue=$(tput setaf 33);
+    red=$(tput setaf 124);
+    white=$(tput setaf 15);
+else
+    reset="\e[0m";
+    blue="\e[1;34m";
+    red="\e[1;31m";
+    white="\e[1;37m";
+fi
+
+# Git
+export GIT_PS1_SHOWDIRTYSTATE=1
+# Load Git prompt
+[[ -r $HOME/.git-prompt.sh && -f $HOME/.git-prompt.sh ]] && source $HOME/.git-prompt.sh;
+
+PS1='${blue}[\u@\h:\w]\n${white}$(__git_ps1 "(%s)")\$ ${reset}';
+export PS1
