@@ -24,5 +24,5 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 # Load Git prompt
 [[ -r $HOME/.git-prompt.sh && -f $HOME/.git-prompt.sh ]] && source $HOME/.git-prompt.sh;
 
-PS1='${blue}[\u@\h:\w]\n${white}$(__git_ps1 "(%s)")\$ ${reset}';
+PS1='[\j]${blue}[\u@\h:\w]\n${white}$(__git_ps1 "(%s)")\$ ${reset}';
 export PS1
