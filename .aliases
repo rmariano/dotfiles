@@ -4,3 +4,6 @@ alias la='ls -lah --color'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ..='cd ..'
+
+# Extra
+alias toclean="find . -regextype posix-basic -regex '^.*\(\.\(swp\|pyc\|swo\)\|~\)$'"
