@@ -14,7 +14,7 @@ shopt -s histappend
 [[ -r $HOME/.git-completion.bash && -f $HOME/.git-completion.bash ]] && source $HOME/.git-completion.bash
 
 # Load dotfiles
-for file in ~/.{bash_prompt,aliases,exports}; do
+for file in ~/.{bash_prompt,aliases,exports,sources}; do
     [[ -r "$file" &&  -f "$file" ]] && source "$file"
 done
 unset file
