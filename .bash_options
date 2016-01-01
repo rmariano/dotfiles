@@ -1,0 +1,5 @@
+shopt -s checkjobs
+shopt -s checkwinsize
+shopt -s cmdhist
+shopt -s histappend
+shopt -s interactive_comments
