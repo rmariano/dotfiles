@@ -1,11 +1,12 @@
 all: deploy
 
-deploy:
-	# Symlink dotfiles
-	for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".git" -not -name ".*.swp"); do \
+dev-deploy:
+	@echo "Symlinking dotfiles..."
+	@for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".git" -not -name ".*.swp"); do \
 		f=$$(basename $$file); \
-		echo Linking $$f; \
-		ln -sfn $$file $(HOME)/$$f; \
+		target=$(HOME)/$$f; \
+		echo -e "\tLinking $$file -> $$target"; \
+		ln -sfn $$file $$target; \
 	done
 
-.PHONY: all deploy
+.PHONY: all dev-deploy
