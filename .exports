@@ -17,3 +17,4 @@ export LC_ALL="en_GB.UTF-8";
 
 # Python virtualenvwrapper
 export WORKON_HOME=~/.virtualenv
+export VIRTUAL_ENV_DISABLE_PROMPT=1
