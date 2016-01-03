@@ -4,6 +4,7 @@
 # https://github.com/robbyrussell/oh-my-zsh/blob/master/themes/agnoster.zsh-theme
 source ~/.git-prompt.sh
 
+VIRTUAL_ENV_DISABLE_PROMPT=1
 CURRENT_BG='NONE'
 
 # Special Powerline characters
