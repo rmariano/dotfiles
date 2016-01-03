@@ -11,12 +11,11 @@ corresponding path.
 2. Run the following command to setup the configuration files:
 
 ```console
-$ make deploy
+$ make dev-deploy
 ```
 
-Updates or custom installations can be achieved by updating the local repository on
-the custom branch or tag, and then running `make deploy` again. Another option would be
-to simply download the code and run the same command.
+This will link the files from the downloaded path to the home directory.
+
 
 ## Vim
 
