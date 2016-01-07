@@ -18,6 +18,3 @@ for file in ~/.{bash_prompt,aliases,exports,sources,bash_options}; do
     [[ -r "$file" &&  -f "$file" ]] && source "$file"
 done
 unset file
-
-PATH=$PATH:$HOME/.local/bin:$HOME/bin
-export PATH
