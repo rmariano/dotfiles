@@ -8,3 +8,5 @@ setopt hist_verify
 setopt inc_append_history
 
 setopt promptsubst
+
+bindkey -e
