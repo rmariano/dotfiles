@@ -16,6 +16,12 @@ $ make dev-deploy
 
 This will link the files from the downloaded path to the home directory.
 
+# Dependencies
+
+* A monospace font compatible with the zsh characters: `adobe-source-code-pro-fonts.noarch`
+* Virtualenvwrapper (for Python development): `python-virtualenvwrapper.noarch`
+* Zsh
+
 
 ## Vim
 

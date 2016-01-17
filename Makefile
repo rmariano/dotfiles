@@ -1,4 +1,4 @@
-all: deploy
+all: dev-deploy
 
 dev-deploy:
 	@echo "Symlinking dotfiles..."
@@ -8,5 +8,16 @@ dev-deploy:
 		echo -e "\tLinking $$file -> $$target"; \
 		ln -sfn $$file $$target; \
 	done
+
+system-deps:
+	dnf install \
+		adobe-source-code-pro-fonts.noarch \
+		python-virtualenvwrapper.noarch \
+		zsh
+
+bootstrap:
+	sudo make system-deps
+	chsh -s $(shell `which zsh`)
+
 
 .PHONY: all dev-deploy
