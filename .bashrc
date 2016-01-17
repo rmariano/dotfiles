@@ -10,6 +10,3 @@ fi
 
 # User specific aliases and functions
 [ -f $HOME/.bash_profile ] && source $HOME/.bash_profile
-
-# Virtual env
-[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
