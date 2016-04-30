@@ -22,3 +22,5 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 PATH=$PATH:$HOME/.local/bin:$HOME/bin
 export PATH
+
+[ -r $HOME/.extra_exports ] && source $HOME/.extra_exports;
