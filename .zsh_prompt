@@ -154,6 +154,12 @@ build_prompt() {
   prompt_end
 }
 
+
+## Check if the current directory is a git project
+is_git_directory () {
+    return $(git rev-parse --is-inside-work-tree >/dev/null 2>&1);
+}
+
 ## First part, until the directory name
 main_prompt() {
   RETVAL=$?
@@ -165,8 +171,12 @@ main_prompt() {
 }
 ## Second part, git status
 secondary_prompt() {
-  prompt_git
-  prompt_end
+    if is_git_directory; then
+        prompt_git
+        prompt_end
+    else
+        echo "$";
+    fi
 }
 
 PROMPT='%{%f%b%k%}$(main_prompt)
