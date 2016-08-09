@@ -10,3 +10,5 @@ setopt inc_append_history
 setopt promptsubst
 
 bindkey -e
+bindkey "^[[3~" delete-char
+bindkey "^[3;5~" delete-char
