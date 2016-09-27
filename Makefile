@@ -19,5 +19,9 @@ bootstrap:
 	sudo make system-deps
 	chsh -s $(shell `which zsh`)
 
+gnome-conf:
+	gsettings set org.gnome.desktop.interface clock-show-date true
+	gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
 
-.PHONY: all dev-deploy
+
+.PHONY: all dev-deploy gnome-conf system-deps
