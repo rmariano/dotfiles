@@ -26,4 +26,4 @@ This will link the files from the downloaded path to the home directory.
 ## Vim
 
 This configuration has its own repository, for my custom `Vim`
-configuration check [rmariano vim](https://github.com/rmariano/vim-config).
+configuration check out [rmariano vim](https://github.com/rmariano/vim-config).
