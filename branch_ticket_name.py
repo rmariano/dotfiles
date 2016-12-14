@@ -51,10 +51,21 @@ def header():
     return """{0}:""".format(ticket)
 
 
+def write_commit_msg_template(commit_msg_file, header, content):
+    """
+    :param file commit_msg_file: the file where to dump the new content
+    :param str header:           the first line (title) in the commit msg
+    :param str content:          Original content from the base template of the
+                                 commit msg.
+    """
+    if header not in content:
+        commit_msg_file.write(header)
+    commit_msg_file.write(content)
+
+
 if __name__ == '__main__':
     with open(sys.argv[1], "r") as original:
         content = original.read()
 
     with open(sys.argv[1], "w") as commit_msg_file:
-        commit_msg_file.write(header())
-        commit_msg_file.write(content)
+        write_commit_msg_template(commit_msg_file, header(), content)
