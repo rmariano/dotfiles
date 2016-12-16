@@ -10,6 +10,8 @@ it to validate your project state or commit message before
 allowing a commit to go through.
 
 argv[1]: path to the temp file where to write the commit message
+argv[2]: Type of commit
+argv[3]: SHA-1 of commit, if it is an amend.
 """
 
 import subprocess
@@ -49,6 +51,31 @@ def header():
     """
     ticket = ticket_from_branch()
     return """{0}:""".format(ticket)
+
+
+def is_merge():
+    """
+    Must check that the second parameters indicates merge, and there is no more
+    parameters (last index is 2, hence length 3).
+    """
+    try:
+        commit_type = sys.argv[2]
+    except IndexError:
+        return False
+    else:
+        return commit_type.lower() == "merge" and len(sys.argv) == 3
+
+
+def is_ammend():
+    """
+    If the commit is an amend, it's SHA-1 is passed in sys.argv[3], hence
+    the length is 4.
+    """
+    return len(sys.argv) == 4
+
+
+def should_write_header():
+    return not (is_merge() or is_ammend())
 
 
 def write_commit_msg_template(commit_msg_file, header, content):
