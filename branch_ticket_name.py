@@ -85,7 +85,7 @@ def write_commit_msg_template(commit_msg_file, header, content):
     :param str content:          Original content from the base template of the
                                  commit msg.
     """
-    if header not in content:
+    if should_write_header():
         commit_msg_file.write(header)
     commit_msg_file.write(content)
 
