@@ -91,8 +91,11 @@ def write_commit_msg_template(commit_msg_file, header, content):
 
 
 if __name__ == '__main__':
-    with open(sys.argv[1], "r") as original:
+
+    commit_msg_filename = sys.argv[1]
+
+    with open(commit_msg_filename, "r") as original:
         content = original.read()
 
-    with open(sys.argv[1], "w") as commit_msg_file:
+    with open(commit_msg_filename, "w") as commit_msg_file:
         write_commit_msg_template(commit_msg_file, header(), content)
