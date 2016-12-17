@@ -10,6 +10,8 @@ it to validate your project state or commit message before
 allowing a commit to go through.
 
 argv[1]: path to the temp file where to write the commit message
+argv[2]: Type of commit
+argv[3]: SHA-1 of commit, if it is an amend.
 """
 
 import subprocess
@@ -51,6 +53,31 @@ def header():
     return """{0}:""".format(ticket)
 
 
+def is_merge():
+    """
+    Must check that the second parameters indicates merge, and there is no more
+    parameters (last index is 2, hence length 3).
+    """
+    try:
+        commit_type = sys.argv[2]
+    except IndexError:
+        return False
+    else:
+        return commit_type.lower() == "merge" and len(sys.argv) == 3
+
+
+def is_ammend():
+    """
+    If the commit is an amend, it's SHA-1 is passed in sys.argv[3], hence
+    the length is 4.
+    """
+    return len(sys.argv) == 4
+
+
+def should_write_header():
+    return not (is_merge() or is_ammend())
+
+
 def write_commit_msg_template(commit_msg_file, header, content):
     """
     :param file commit_msg_file: the file where to dump the new content
@@ -58,14 +85,17 @@ def write_commit_msg_template(commit_msg_file, header, content):
     :param str content:          Original content from the base template of the
                                  commit msg.
     """
-    if header not in content:
+    if should_write_header():
         commit_msg_file.write(header)
     commit_msg_file.write(content)
 
 
 if __name__ == '__main__':
-    with open(sys.argv[1], "r") as original:
+
+    commit_msg_filename = sys.argv[1]
+
+    with open(commit_msg_filename, "r") as original:
         content = original.read()
 
-    with open(sys.argv[1], "w") as commit_msg_file:
+    with open(commit_msg_filename, "w") as commit_msg_file:
         write_commit_msg_template(commit_msg_file, header(), content)
