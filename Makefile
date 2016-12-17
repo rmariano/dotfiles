@@ -17,9 +17,10 @@ system-deps:
 		python-virtualenvwrapper.noarch \
 		zsh
 
+.PHONY: hooks
 hooks:
 	@for proj_hook in $(wildcard $(PROJECTS)/*/.git/hooks); do \
-		base=$(CURDIR)/branch_ticket_name.py; \
+		base=$(CURDIR)/git-hooks/branch_ticket_name.py; \
 		target=$$proj_hook/prepare-commit-msg; \
 		echo -e "\t Linking $$base -> $$target;"; \
 		ln -sfn $$base $$target; \
