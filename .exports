@@ -22,7 +22,6 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Where my local projects should be found
 export PROJECTS=$HOME/projects
 
-PATH=$PATH:$HOME/.local/bin
-export PATH
+export PATH=$HOME/.local/bin:$PATH
 
 [ -r $HOME/.extra_exports ] && source $HOME/.extra_exports;
