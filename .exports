@@ -16,7 +16,7 @@ export LANG="en_GB.UTF-8";
 export LC_ALL="en_GB.UTF-8";
 
 # Python virtualenvwrapper
-export WORKON_HOME=~/.virtualenv
+export WORKON_HOME=~/.venv
 # Untracked files do not make git status dirty
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Where my local projects should be found
