@@ -33,3 +33,8 @@ hooks:
 bootstrap:
 	sudo make system-deps
 	chsh -s $(shell `which zsh`)
+
+.PHONY: gnome-conf
+gnome-conf:
+	gsettings set org.gnome.desktop.interface clock-show-date true
+	gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"
