@@ -23,6 +23,7 @@ export DISABLE_UNTRACKED_FILES_DIRTY="true"
 export PROJECTS=$HOME/projects
 
 export PATH=$HOME/.local/bin:$PATH
+export GOPATH=$HOME/projects/go
 
 [ -r $HOME/.extra_exports ] && source $HOME/.extra_exports;
 [ -f $HOME/.local/bin/virtualenvwrapper.sh ] && source $HOME/.local/bin/virtualenvwrapper.sh
