@@ -17,7 +17,6 @@ dev-deploy:
 system-deps:
 	dnf install \
 		adobe-source-code-pro-fonts.noarch \
-		python-virtualenvwrapper.noarch \
 		zsh
 
 .PHONY: hooks
