@@ -17,7 +17,9 @@ dev-deploy:
 system-deps:
 	dnf install \
 		adobe-source-code-pro-fonts.noarch \
-		zsh
+		zsh \
+		vim-enhanced \
+		git-tools
 
 .PHONY: hooks
 hooks:
@@ -31,7 +33,7 @@ hooks:
 .PHONY: bootstrap
 bootstrap:
 	sudo make system-deps
-	chsh -s $(shell `which zsh`)
+	chsh -s /bin/zsh
 
 .PHONY: gnome-conf
 gnome-conf:
