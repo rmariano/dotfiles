@@ -1,7 +1,14 @@
 PROJECTS := $(HOME)/projects
+FONTS := $(HOME)/.local/share/fonts
 
 .PHONY: all
 all: dev-deploy
+
+.PHONY: fonts
+fonts:
+	mkdir -p $(FONTS)
+	cp -a fonts/* $(FONTS)/
+	fc-cache -f -v
 
 .PHONY: dev-deploy
 dev-deploy:
@@ -17,7 +24,6 @@ dev-deploy:
 system-deps:
 	dnf install \
 		adobe-source-code-pro-fonts.noarch \
-		python-virtualenvwrapper.noarch \
 		zsh
 
 .PHONY: hooks
