@@ -34,6 +34,7 @@ hooks:
 bootstrap:
 	sudo make system-deps
 	chsh -s /bin/zsh
+	@echo "Restart session for changes to take effect (fonts)"
 
 .PHONY: gnome-conf
 gnome-conf:
