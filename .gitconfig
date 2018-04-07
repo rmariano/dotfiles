@@ -1,0 +1,3 @@
+[alias]
+    psh = push origin HEAD
+    lg = log --name-status
