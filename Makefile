@@ -26,7 +26,8 @@ system-deps:
 		adobe-source-code-pro-fonts.noarch \
 		zsh \
 		vim-enhanced \
-		git-tools
+		git-tools \
+		powerline
 
 .PHONY: hooks
 hooks:
