@@ -24,7 +24,7 @@ gitclean() {
 
     git checkout $BRANCH \
         && git pull origin $BRANCH \
-        && git branch --merged | egrep -v '(\*|master|develop)' | xargs git branch -d
+        && git branch --merged | egrep -v '(\*|master|develop)' | xargs -r git branch -d
 }
 
 
