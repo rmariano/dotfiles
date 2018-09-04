@@ -20,8 +20,10 @@ gitclean() {
     ### A git helper function
     ### Update ``master`` and delete old (merged) branches
     ####
-    git checkout master \
-        && git pull origin master \
+    BRANCH=${1:-master}
+
+    git checkout $BRANCH \
+        && git pull origin $BRANCH \
         && git branch --merged | egrep -v '(\*|master|develop)' | xargs git branch -d
 }
 
