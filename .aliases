@@ -7,4 +7,6 @@ alias ..='cd ..'
 
 # Extra
 alias toclean="find . -regextype posix-basic -regex '^.*\(\.\(swp\|pyc\|swo\)\|~\)$'"
+
+# Refresh ssh-agent inside tmux
 alias e='eval $(echo "export $(tmux show-environment | grep SSH_AUTH)")'

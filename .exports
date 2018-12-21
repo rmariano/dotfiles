@@ -4,19 +4,12 @@
 # Make vim the default editor
 export EDITOR=/usr/bin/vim;
 
-# Larger bash history (allow 32³ entries; default is 500)
-export HISTSIZE=50000000;
-export HISTFILESIZE=$HISTSIZE;
-export HISTCONTROL=ignoredups;
-export HISTFILE=$HOME/.zsh_history
-export SAVEHIST=10000
-
 # Prefer GB English and use UTF-8
 export LANG="en_GB.UTF-8";
 export LC_ALL="en_GB.UTF-8";
 
 # Python virtualenvwrapper
-export WORKON_HOME=~/.venvs
+export WORKON_HOME="$HOME/.venvs"
 # Untracked files do not make git status dirty
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Where my local projects should be found
@@ -25,5 +18,5 @@ export PROJECTS=$HOME/projects
 export PATH=$HOME/.local/bin:$PATH
 export GOPATH=$HOME/projects/go
 
-[ -r $HOME/.extra_exports ] && source $HOME/.extra_exports;
-[ -f $HOME/.functions.sh ] && source $HOME/.functions.sh;
+[[ -r "$HOME/.extra_exports" ]] && source "$HOME/.extra_exports"
+[[ -f "$HOME/.functions.sh" ]] && source "$HOME/.functions.sh"
