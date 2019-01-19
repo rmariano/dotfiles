@@ -4,8 +4,9 @@ alias la='ls -lah --color'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ..='cd ..'
+alias grep='grep --color=always'
 
-# Extra
+# Clean Python & Vim files
 alias toclean="find . -regextype posix-basic -regex '^.*\(\.\(swp\|pyc\|swo\)\|~\)$'"
 
 # Refresh ssh-agent inside tmux
