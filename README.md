@@ -14,6 +14,12 @@ corresponding path.
 $ make dev-deploy
 ```
 
+## Extensibility & custom configuration
+If there exists a file at ``~/.extra``, this configuration will be loaded after
+all the default values, making the configuration extensible. Here, custom
+extensions, aliases, functions, that aren't going to be tracked or versioned
+can be written, potentially overriding default values.
+
 This will link the files from the downloaded path to the home directory.
 
 # Dependencies
