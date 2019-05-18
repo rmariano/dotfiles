@@ -1,4 +1,4 @@
-PROJECTS := $(HOME)/projects
+PROJECTS := $(HOME)/code
 
 .PHONY: all
 all: dev-deploy
@@ -12,6 +12,7 @@ dev-deploy:
 		echo -e "\tLinking $$file -> $$target"; \
 		ln -sfn $$file $$target; \
 	done
+	@ln -sfn $(CURDIR)/flake8 $(HOME)/.config/flake8
 
 .PHONY: system-deps
 system-deps:
