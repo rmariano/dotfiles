@@ -1,22 +1,27 @@
 #!/bin/bash
-# vi: set ft=sh :
 
 # Make vim the default editor
-export EDITOR=/usr/bin/vim;
+export EDITOR=$(which vim)
 
 # Prefer GB English and use UTF-8
 export LANG="en_GB.UTF-8";
 export LC_ALL="en_GB.UTF-8";
 
 # Python virtualenvwrapper
-export WORKON_HOME="$HOME/.venvs"
+export WORKON_HOME="${HOME}/.venvs"
 # Untracked files do not make git status dirty
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
-# Where my local projects should be found
-export PROJECTS=$HOME/projects
+export PROJECTS="${HOME}/code"
 
-export PATH=$HOME/.local/bin:$PATH
-export GOPATH=$HOME/projects/go
+export PATH=${HOME}/.local/bin:${PATH}
+export GOPATH="${PROJECTS}/go"
 
-[[ -r "$HOME/.extra_exports" ]] && source "$HOME/.extra_exports"
-[[ -f "$HOME/.functions.sh" ]] && source "$HOME/.functions.sh"
+if [[ -z $SHELL_LOADED ]]; then
+    export SHELL_LOADED=$(basename ${SHELL})
+fi
+
+# History configuration
+export HISTSIZE=50000000;
+export HISTFILESIZE=$HISTSIZE;
+export HISTCONTROL=ignoredups;
+export HISTFILE="${HOME}/.${SHELL_LOADED}_history"

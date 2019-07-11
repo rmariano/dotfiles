@@ -2,18 +2,21 @@
 # Disable CTRL-S/Q
 stty -ixon
 
+export SHELL_LOADED="bash"
+
 # Source global definitions
 [[ -f /etc/bashrc ]] && source /etc/bashrc
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
+# make 'less' more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(lesspipe)"
 
-# User specific aliases and functions
-[[ -f "${HOME}/.bash_profile" ]] && source "${HOME}/.bash_profile"
+# Load git completion
+[[ -r $HOME/.git-completion.bash && -f $HOME/.git-completion.bash ]] && source $HOME/.git-completion.bash
 
-# Larger bash history (allow 32³ entries; default is 500)
-export HISTSIZE=50000000;
-export HISTFILESIZE=$HISTSIZE;
-export HISTCONTROL=ignoredups;
-export HISTFILE=$HOME/.bash_history
-export HISTTIMEFORMAT="[%Y-%m-%d %H:%M] "
+# Load the dot-files. Note: 'extra' must be at the end for extensibility
+for file in ~/.{exports,aliases,bash_options,bash_prompt,functions.sh,extra}; do
+    [[ -r "$file" &&  -f "$file" ]] && . "$file" ;
+done
+unset file
+
+export HISTTIMEFORMAT="%Y-%m-%d %H:%M "
