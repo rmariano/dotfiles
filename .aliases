@@ -1,5 +1,11 @@
-alias ll='ls -lh --color'
-alias la='ls -lah --color'
+if [[ "$(uname)" == "Linux" ]]; then
+    alias ll='ls -lh --color'
+    alias la='ls -lah --color'
+else
+    alias ll='ls -lhG'
+    alias la='ls -lahG'
+fi
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias ..='cd ..'
