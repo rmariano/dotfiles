@@ -1,5 +1,8 @@
 shopt -s checkjobs
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 shopt -s cmdhist
+# Append to the Bash history file, rather than overwriting it
 shopt -s histappend
 shopt -s interactive_comments

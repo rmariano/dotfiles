@@ -1,3 +1,5 @@
 [alias]
     psh = push origin HEAD
     lg = log --name-status
+[include]
+    path = .gitconfig.extra

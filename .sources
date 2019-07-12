@@ -1,4 +1,0 @@
-# vim: ft=sh
-# Source other files
-# Python Virtual environment
-[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh

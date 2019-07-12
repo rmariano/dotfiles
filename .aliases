@@ -1,6 +1,11 @@
-# vim: ft=sh
-alias ll='ls -lh --color'
-alias la='ls -lah --color'
+if [[ "$(uname)" == "Linux" ]]; then
+    alias ll='ls -lh --color'
+    alias la='ls -lah --color'
+else
+    alias ll='ls -lhG'
+    alias la='ls -lahG'
+fi
+
 alias cp='cp -i'
 alias mv='mv -i'
 alias ..='cd ..'
@@ -9,5 +14,8 @@ alias grep='grep --color=always'
 # Clean Python & Vim files
 alias toclean="find . -regextype posix-basic -regex '^.*\(\.\(swp\|pyc\|swo\)\|~\)$'"
 
-# Refresh ssh-agent inside tmux
-alias e='eval $(echo "export $(tmux show-environment | grep SSH_AUTH)")'
+if [[ "${SHELL_LOADED}" == "bash" ]]; then
+    alias hist='history';
+elif [[ "${SHELL_LOADED}" == "zsh" ]]; then
+    alias hist='fc -li 0';
+fi
