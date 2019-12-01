@@ -12,6 +12,7 @@ dev-deploy:
 		echo -e "\tLinking $$file -> $$target"; \
 		ln -sfn $$file $$target; \
 	done
+	mkdir -p $(HOME)/.config
 	@ln -sfn $(CURDIR)/flake8 $(HOME)/.config/flake8
 
 .PHONY: system-deps
