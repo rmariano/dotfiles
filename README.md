@@ -1,7 +1,7 @@
-# Linux Shell Configuration Files
----------------------------------
+# Unix Shell Configuration Files
+--------------------------------
 
-The list of my configuration files. Each file should be dropped into its
+The list of my configuration files. Each file should be placed into its
 corresponding path.
 
 
@@ -15,6 +15,7 @@ $ make dev-deploy
 ```
 
 ## Extensibility & custom configuration
+
 If there exists a file at ``~/.extra``, this configuration will be loaded after
 all the default values, making the configuration extensible. Here, custom
 extensions, aliases, functions, that aren't going to be tracked or versioned
@@ -24,9 +25,8 @@ This will link the files from the downloaded path to the home directory.
 
 # Dependencies
 
-* A monospace font compatible with the zsh characters: `adobe-source-code-pro-fonts.noarch`
-* Virtualenvwrapper (for Python development): `python-virtualenvwrapper.noarch`
-* Zsh
+* A mono spaced font compatible with the zsh characters (for example ``Source Code Pro``).
+* Optionally, the ``zsh`` shell can be used.
 
 
 ## Vim
