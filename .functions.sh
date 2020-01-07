@@ -3,6 +3,7 @@
 ## Extra functions available at the command line
 ####
 
+########## Python-specific
 workon() {
     ###
     ## Activate the virtual environment
@@ -14,7 +15,32 @@ workon() {
     source $VENV_LOCATION
 }
 
+####
+## Function to create virtual environments
+## Call format: $ mkvirtualenv <virtual-environment-name> [<python-version>]
+## The first parameter is mandatory and it's the name of the new virtual
+## environment to create.
+## The second, optionally indicates the Python version to use (e.g. "python3.8")
+## The new virtual environment will be created in $WORKON_HOME
+####
+mkvirtualenv() {
+    VIRTUALENV_NAME=${1}
+    if [ -z "$VIRTUALENV_NAME" ]; then
+        echo "No name was provided for the new virtual envionment"
+        return -1
+    fi
 
+    if [ -z "$2" ]; then
+        PYTHON_VERSION=$(which python3);
+    else
+        PYTHON_VERSION=${2}
+    fi
+    echo "Creating environment '${VIRTUALENV_NAME}' with $(${PYTHON_VERSION} --version)"
+
+    ${PYTHON_VERSION} -m venv "${WORKON_HOME}/${VIRTUALENV_NAME}"
+}
+
+########## Git
 gitclean() {
     ####
     ### A git helper function
@@ -28,6 +54,7 @@ gitclean() {
 }
 
 
+## Miscellaneous
 man() {
     ### Colors in man pages!
 	env \
