@@ -41,11 +41,10 @@ mkvirtualenv() {
 }
 
 ########## Git
+####
+### Update ``master`` and delete old (merged) branches
+####
 gitclean() {
-    ####
-    ### A git helper function
-    ### Update ``master`` and delete old (merged) branches
-    ####
     BRANCH=${1:-master}
 
     git checkout $BRANCH \
@@ -53,6 +52,19 @@ gitclean() {
         && git branch --merged | egrep -v '(\*|master|develop)' | xargs -r git branch -d
 }
 
+########## Docker
+## Clean up stale resources allocated by Docker
+docker-cleanup() {
+    echo "Deleting dangling volumes..."
+    docker volume rm $(docker volume ls -qf dangling=true)
+    echo "Deleting old Docker images..."
+    docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+}
+
+## Stop all running Docker containers
+docker-stop-all() {
+    docker ps -q | xargs -r docker stop
+}
 
 ## Miscellaneous
 man() {
