@@ -25,3 +25,5 @@ export HISTSIZE=50000000;
 export HISTFILESIZE=$HISTSIZE;
 export HISTCONTROL=ignoredups;
 export HISTFILE="${HOME}/.${SHELL_LOADED}_history"
+# GPG
+export GPG_TTY=$(tty)

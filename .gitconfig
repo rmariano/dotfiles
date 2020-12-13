@@ -3,3 +3,7 @@
     lg = log --name-status
 [include]
     path = .gitconfig.extra
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg2
