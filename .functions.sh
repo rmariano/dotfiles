@@ -42,14 +42,14 @@ mkvirtualenv() {
 
 ########## Git
 ####
-### Update ``master`` and delete old (merged) branches
+### Update ``main`` and delete old (merged) branches
 ####
 gitclean() {
-    BRANCH=${1:-master}
+    BRANCH=${1:-main}
 
     git checkout $BRANCH \
         && git pull origin $BRANCH \
-        && git branch --merged | egrep -v '(\*|master|develop)' | xargs -r git branch -d
+        && git branch --merged | egrep -v '(\*|main|mainline|master|develop)' | xargs -r git branch -d
 }
 
 ########## Docker
