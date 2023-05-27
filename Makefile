@@ -13,6 +13,7 @@ dev-deploy:
 		ln -sfn $$file $$target; \
 	done
 	mkdir -p $(HOME)/.config
+	ln -sfn $(CURDIR)/custom-config.zsh $(HOME)/.oh-my-zsh/custom/custom-config.zsh
 
 .PHONY: remove
 remove:
