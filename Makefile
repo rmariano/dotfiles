@@ -13,7 +13,6 @@ dev-deploy:
 		ln -sfn $$file $$target; \
 	done
 	mkdir -p $(HOME)/.config
-	@ln -sfn $(CURDIR)/flake8 $(HOME)/.config/flake8
 
 .PHONY: remove
 remove:
@@ -32,7 +31,6 @@ deploy:
 		cp -f $$file $$target; \
 	done
 	mkdir -p $(HOME)/.config
-	@ln -sfn $(CURDIR)/flake8 $(HOME)/.config/flake8
 
 .PHONY: system-deps
 system-deps:
