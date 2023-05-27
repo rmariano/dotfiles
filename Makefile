@@ -13,6 +13,7 @@ dev-deploy:
 		ln -sfn $$file $$target; \
 	done
 	mkdir -p $(HOME)/.config
+	ln -sfn $(CURDIR)/custom-config.zsh $(HOME)/.oh-my-zsh/custom/custom-config.zsh
 
 .PHONY: remove
 remove:
@@ -32,14 +33,6 @@ deploy:
 	done
 	mkdir -p $(HOME)/.config
 
-.PHONY: system-deps
-system-deps:
-	dnf install \
-		adobe-source-code-pro-fonts.noarch \
-		zsh \
-		vim-enhanced \
-		git-tools
-
 .PHONY: hooks
 hooks:
 	@for proj_hook in $(wildcard $(PROJECTS)/*/.git/hooks); do \
@@ -48,14 +41,3 @@ hooks:
 		echo -e "\t Linking $$base -> $$target;"; \
 		ln -sfn $$base $$target; \
 	done
-
-.PHONY: bootstrap
-bootstrap:
-	sudo make system-deps
-	chsh -s /bin/zsh
-	@echo "Restart session for changes to take effect (fonts)"
-
-.PHONY: gnome-conf
-gnome-conf:
-	gsettings set org.gnome.desktop.interface clock-show-date true
-	gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize,close"

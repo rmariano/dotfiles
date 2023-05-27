@@ -10,12 +10,4 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias ..='cd ..'
 alias grep='grep --color=always'
-
-# Clean Python & Vim files
-alias toclean="find . -regextype posix-basic -regex '^.*\(\.\(swp\|pyc\|swo\)\|~\)$'"
-
-if [[ "${SHELL_LOADED}" == "bash" ]]; then
-    alias hist='history';
-elif [[ "${SHELL_LOADED}" == "zsh" ]]; then
-    alias hist='fc -li 0';
-fi
+alias hist='fc -li 0';
