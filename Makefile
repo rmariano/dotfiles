@@ -15,6 +15,13 @@ dev-deploy:
 	mkdir -p $(HOME)/.config
 	@ln -sfn $(CURDIR)/flake8 $(HOME)/.config/flake8
 
+.PHONY: remove
+remove:
+	@for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".git" -not -name ".*.swp"); do \
+		f=$$(basename $$file); \
+		rm -f $(HOME)/$$f; \
+	done
+
 .PHONY: deploy
 deploy:
 	@echo "Copying dotfiles..."
