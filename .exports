@@ -7,8 +7,9 @@ export EDITOR=$(which vim)
 export LANG="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
 
-# Python virtualenvwrapper
-export WORKON_HOME="${HOME}/.venvs"
+# Git
+export GIT_PAGER=cat git diff
+
 # Untracked files do not make git status dirty
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
 export PROJECTS="${HOME}/code"
