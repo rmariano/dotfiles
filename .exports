@@ -7,9 +7,6 @@ export EDITOR=$(which vim)
 export LANG="en_US.UTF-8";
 export LC_ALL="en_US.UTF-8";
 
-# Git
-export GIT_PAGER=cat git diff
-
 # Untracked files do not make git status dirty
 export DISABLE_UNTRACKED_FILES_DIRTY="true"
 export PROJECTS="${HOME}/code"
@@ -20,6 +17,8 @@ export GOPATH="${PROJECTS}/go"
 if [[ -z $SHELL_LOADED ]]; then
     export SHELL_LOADED=$(basename ${SHELL})
 fi
+
+export LESS="FR"
 
 # History configuration
 export HISTSIZE=50000000;
