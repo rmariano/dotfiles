@@ -52,6 +52,16 @@ gitclean() {
         && git branch --merged | egrep -v '(\*|main|mainline|master|develop)' | xargs -r git branch -d
 }
 
+,git-archive-branch() {
+    BRANCH_NAME=${1}
+    if [ -z ${BRANCH_NAME} ]; then
+        echo "Error: Branch not specified";
+        return 1;
+    fi;
+    git tag archive/${BRANCH_NAME};
+    git branch -D ${BRANCH_NAME};
+}
+
 ########## Docker
 ## Clean up stale resources allocated by Docker
 docker-cleanup() {
