@@ -71,7 +71,7 @@ gitclean() {
     PASTE_LOCATION="${PASTE_REPO_LOCATION}/paste"
     cp -f ${FILE_TO_ADD} ${PASTE_LOCATION}
     cd ${PASTE_LOCATION}
-    local_file=$(echo ${FILE_TO_ADD} | xargs basename)
+    local_file=$(basename ${FILE_TO_ADD})
     git add ${local_file} && git commit -m "New paste"
     git push origin HEAD
     link_to_paste=$(gh browse -n ${local_file})
