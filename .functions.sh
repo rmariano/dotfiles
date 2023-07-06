@@ -80,17 +80,15 @@ gitclean() {
 }
 
 ########## Docker
-## Clean up stale resources allocated by Docker
-docker-cleanup() {
-    echo "Deleting dangling volumes..."
-    docker volume rm $(docker volume ls -qf dangling=true)
-    echo "Deleting old Docker images..."
-    docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
-}
 
 ## Stop all running Docker containers
-docker-stop-all() {
-    docker ps -q | xargs -r docker stop
+,docker-stop-all() {
+    docker stop $(docker ps -a -q)
+}
+
+,docker-shell-img() {
+    IMAGE_NAME_OR_ID=${1}
+    docker run --rm -it ${IMAGE_NAME_OR_ID} bash
 }
 
 ## Miscellaneous
