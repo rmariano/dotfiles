@@ -11,3 +11,4 @@ alias mv='mv -i'
 alias ..='cd ..'
 alias grep='grep --color=always'
 alias hist='fc -li 0';
+alias python=python3
