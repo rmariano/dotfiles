@@ -88,7 +88,7 @@ gitclean() {
 
 ,docker-shell-img() {
     IMAGE_NAME_OR_ID=${1}
-    docker run --rm -it ${IMAGE_NAME_OR_ID} bash
+    docker run --rm -it ${IMAGE_NAME_OR_ID} sh
 }
 
 ## Miscellaneous
