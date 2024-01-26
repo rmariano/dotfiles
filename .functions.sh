@@ -62,6 +62,17 @@ gitclean() {
     git branch -D ${BRANCH_NAME};
 }
 
+,git-backup-branch() {
+    CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD);
+    git checkout -b backup/${CURRENT_BRANCH} ${CURRENT_BRANCH}
+    git checkout -
+}
+
+,git-prb() { # pull --rebase
+    CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD);
+    git pull --rebase origin ${CURRENT_BRANCH}
+}
+
 
 ## Add a new file into a repo that works as a paste
 # requires env bar PASTE_REPO_LOCATION
