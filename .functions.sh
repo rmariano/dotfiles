@@ -44,12 +44,17 @@ mkvirtualenv() {
 ####
 ### Update ``main`` and delete old (merged) branches
 ####
-gitclean() {
+,git-clean() {
     BRANCH=${1:-main}
+    PREFIX=${2}
 
     git checkout $BRANCH \
         && git pull origin $BRANCH \
         && git branch --merged | egrep -v '(\*|main|mainline|master|develop)' | xargs -r git branch -d
+
+    if [ -n "${PREFIX}" ]; then
+        git branch | grep --color=none "${PREFIX}" | xargs -r git branch -D
+    fi
 }
 
 ,git-archive-branch() {
