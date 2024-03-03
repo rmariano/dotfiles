@@ -3,3 +3,19 @@
     lg = log --name-status
 [include]
     path = .gitconfig.extra
+[push]
+	default = current
+[commit]
+	verbose = true
+[rerere]
+	enabled = true
+[core]
+	pager = delta --line-numbers
+[transfer]
+	fsckobject = true
+[fetch]
+    fsckobjects = true
+[receive]
+    fsckObjects = true
+[merge]
+    conflictstyle = zdiff3
