@@ -27,3 +27,6 @@ export HISTCONTROL=ignoredups;
 export HISTFILE="${HOME}/.${SHELL_LOADED}_history"
 # GPG
 export GPG_TTY=$(tty)
+
+# Ripgrep's configuration
+export RIPGREP_CONFIG_PATH="${HOME}/.ripgreprc"

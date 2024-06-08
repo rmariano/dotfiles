@@ -1,0 +1,12 @@
+# Search hidden files / directories by default
+--hidden
+
+# Except .git
+--glob=!.git/*
+
+# Colors
+--colors=line:none
+--colors=line:style:bold
+
+# Case
+--smart-case
