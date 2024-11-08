@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 """
+prepare-commit-msg
 From: https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks
 
 The commit-msg hook takes one parameter, which again is the path to a
@@ -45,17 +46,17 @@ def ticket_from_branch():
     return ticket_name(current_branch_name())
 
 
-def header():
+def header() -> str:
     """
     Return the string that will compose the header of the commit msg
     """
     ticket = ticket_from_branch()
-    return """{0}:""".format(ticket)
+    return f"{ticket}: "
 
 
-def is_merge():
+def is_of_any_type(commit_types: set[str]) -> bool:
     """
-    Must check that the second parameters indicates merge, and there is no more
+    Must check that the second parameters indicates one of the provided types, and there is no more
     parameters (last index is 2, hence length 3).
     """
     try:
@@ -63,7 +64,8 @@ def is_merge():
     except IndexError:
         return False
     else:
-        return commit_type.lower() == "merge" and len(sys.argv) == 3
+        no_extra_parameters = len(sys.argv) == 3
+        return commit_type.lower() in commit_types and no_extra_parameters
 
 
 def is_ammend():
@@ -75,7 +77,7 @@ def is_ammend():
 
 
 def should_write_header():
-    return not (is_merge() or is_ammend())
+    return not (is_of_any_type({"merge", "squash"}) or is_ammend())
 
 
 def write_commit_msg_template(commit_msg_file, header, content):
