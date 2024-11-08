@@ -51,6 +51,8 @@ def header() -> str:
     Return the string that will compose the header of the commit msg
     """
     ticket = ticket_from_branch()
+    if ticket == "HEAD":
+        return ""
     return f"{ticket}: "
 
 
