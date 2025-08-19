@@ -41,6 +41,12 @@
     git pull --rebase origin ${CURRENT_BRANCH}
 }
 
+,git-diff() {
+  CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD);
+  AGAINST=${1}
+  git diff ${AGAINST} | diff2html -i stdin -t "Diff ${CURRENT_BRANCH}..${AGAINST}" --summary open
+}
+
 
 ## Docker
 
