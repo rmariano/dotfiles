@@ -1,10 +1,5 @@
-if [[ "$(uname)" == "Linux" ]]; then
-    alias ll='ls -lh --color'
-    alias la='ls -lah --color'
-else
-    alias ll='ls -lhG'
-    alias la='ls -lahG'
-fi
+alias ll='ls -lhG'
+alias la='ls -lahG'
 
 alias cp='cp -i'
 alias mv='mv -i'
@@ -12,6 +7,3 @@ alias ..='cd ..'
 alias grep='grep --color=always'
 alias hist='fc -li 0';
 alias python=python3
-
-alias git-list-untracked='git fetch --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | grep -v "*"'
-alias git-remove-untracked='git fetch --prune && git branch -r | awk "{print \$1}" | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk "{print \$1}" | grep -v "*" | xargs git branch -d'
