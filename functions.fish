@@ -16,7 +16,7 @@ function ,git-clean
 
     git checkout $branch \
         && git pull origin $branch \
-        && git branch --merged | egrep -v '(\*|main|mainline|master|develop)' | xargs -r git branch -d
+        && git branch --merged | egrep -v '(\+|\*|main|mainline|master|develop)' | xargs -r git branch -d
 
     if test -n "$prefix"
         git branch | grep --color=none "$prefix" | xargs -r git branch -D
