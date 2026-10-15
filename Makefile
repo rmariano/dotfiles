@@ -25,13 +25,7 @@ remove:
 .PHONY: deploy
 deploy:
 	@echo "Copying dotfiles..."
-	@for file in $(shell find $(CURDIR) -name ".*" -not -name ".gitignore" -not -name ".git" -not -name ".*.swp"); do \
-		f=$$(basename $$file); \
-		target=$(HOME)/$$f; \
-		echo -e "\tCopying $$file -> $$target"; \
-		cp -f $$file $$target; \
-	done
-	mkdir -p $(HOME)/.config
+	cp fish/functions/*.fish ~/.config/fish/functions
 
 .PHONY: hooks
 hooks:
