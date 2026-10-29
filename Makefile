@@ -29,9 +29,11 @@ deploy:
 
 .PHONY: hooks
 hooks:
-	@for proj_hook in $(wildcard $(PROJECTS)/*/.git/hooks); do \
-		base=$(CURDIR)/git-hooks/branch_ticket_name.py; \
-		target=$$proj_hook/prepare-commit-msg; \
+	find "$(PROJECTS)" -type d -exec test -d '{}/.git' \; -prune -exec sh -c ' \
+		proj_hook="$$1/.git/hooks"; \
+		if [ ! -d "$$proj_hook" ]; then exit 0; fi; \
+		base="$(CURDIR)/git-hooks/branch_ticket_name.py"; \
+		target="$$proj_hook/prepare-commit-msg"; \
 		echo -e "\t Linking $$base -> $$target;"; \
-		ln -sfn $$base $$target; \
-	done
+		ln -sfn "$$base" "$$target"; \
+	' sh {} \;

@@ -26,24 +26,26 @@ def current_branch_name():
 
 def ticket_name(branch_name):
     """
-    Assume the naming convention <ticket_no><underscore><description>
+    Assume any of the following naming conventions:
+        - `<ticket_no>_<description>`
+        - `<ticket_no>/<description>`
+
     and return <ticket_no>
 
-    Where: <underscore>  -> "_"
-
-    The delimiter is an <underscore>
     In case this is not respected it will return the token
     up to the first <underscore>, or everything if none is found.
 
     :param str branch_name: name of the branch we are currently in
     :return: ticket number from the branch
     """
-    ticket_no, _, _ = branch_name.partition("_")
-    return ticket_no
+    for separator in ("/", "_"):
+        ticket_no, _, description = branch_name.partition(separator)
+        if description:
+            return ticket_no
 
 
-def ticket_from_branch():
-    return ticket_name(current_branch_name())
+def ticket_from_branch() -> str:
+    return ticket_name(current_branch_name()) or ""
 
 
 def header() -> str:
@@ -70,7 +72,7 @@ def is_of_any_type(commit_types: set[str]) -> bool:
         return commit_type.lower() in commit_types and no_extra_parameters
 
 
-def is_ammend():
+def is_amend():
     """
     If the commit is an amend, it's SHA-1 is passed in sys.argv[3], hence
     the length is 4.
@@ -79,7 +81,7 @@ def is_ammend():
 
 
 def should_write_header():
-    return not (is_of_any_type({"merge", "squash"}) or is_ammend())
+    return not (is_of_any_type({"merge", "squash"}) or is_amend())
 
 
 def write_commit_msg_template(commit_msg_file, header, content):
