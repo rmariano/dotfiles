@@ -7,7 +7,11 @@ function ,paste
     cp -f $file_to_add $paste_location
     cd $paste_location
     set local_file (basename $file_to_add)
-    git add $local_file && git commit -m "New paste"
+    read -P "Description [$local_file]: " description
+    if test -z "$description"
+        set description $local_file
+    end
+    git add $local_file && git commit -m "New paste: $description"
     git push origin HEAD
     set link_to_paste (gh browse -n $local_file)
     cd $current_dir
