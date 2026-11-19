@@ -53,7 +53,8 @@ def header() -> str:
     Return the string that will compose the header of the commit msg
     """
     ticket = ticket_from_branch()
-    if ticket == "HEAD":
+    # Detached HEAD (e.g. during a rebase) has no ticket: `ticket_name("HEAD")` is None.
+    if not ticket or ticket == "HEAD":
         return ""
     return f"{ticket}: "
 
