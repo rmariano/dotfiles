@@ -73,19 +73,3 @@ man() {
 		LESS_TERMCAP_us="$(printf '\e[1;32m')" \
 		man "$@"
 }
-
-## Add a new file into a repo that works as a paste
-# requires env bar PASTE_REPO_LOCATION
-,paste() {
-    current_dir=$(pwd)
-    FILE_TO_ADD=${1}
-    PASTE_LOCATION="${PASTE_REPO_LOCATION}/paste"
-    cp -f ${FILE_TO_ADD} ${PASTE_LOCATION}
-    cd ${PASTE_LOCATION}
-    local_file=$(basename ${FILE_TO_ADD})
-    git add ${local_file} && git commit -m "New paste"
-    git push origin HEAD
-    link_to_paste=$(gh browse -n ${local_file})
-    cd ${current_dir}
-    echo "New paste successfully created at: ${link_to_paste}"
-}
